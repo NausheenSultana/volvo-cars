@@ -51,7 +51,7 @@ const Home = () => {
     return <p>Loading cars...</p>;
   } else
     return (
-      <Block extend={{ padding: 20 }}>
+      <Block extend={{ paddingTop: 20 }}>
         <Card>
           <CardContent className={classes.wrapper}>
             <Box className={classes.headers}>

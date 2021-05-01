@@ -14,7 +14,7 @@ const CarCard = ({ id, bodyType, modelName, modelType, imageUrl }) => {
         <Typography variant="h5" className={classes.title}>
           {modelName}
         </Typography>
-        <span>{modelType}</span>
+        <span style={{ color: "#555" }}>{modelType}</span>
       </Box>
       <img className={classes.carImg} src={imageUrl} alt={bodyType} />
       <Box className={classes.linkContainer}>

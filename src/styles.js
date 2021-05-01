@@ -9,6 +9,7 @@ export default makeStyles((theme) => ({
     width: "85%",
     margin: "0 25px",
     maxWidth: theme.spacing(180),
+    ["@media (max-width:500px)"]: { margin: "0px", width: "90%" },
   },
   pageTitle: {
     textAlign: "left",
@@ -18,6 +19,7 @@ export default makeStyles((theme) => ({
   },
   headers: {
     marginLeft: "29px",
+    ["@media (max-width:500px)"]: { marginLeft: "0px" },
   },
   search: {
     textOverflow: "ellipsis",
@@ -67,6 +69,7 @@ export default makeStyles((theme) => ({
     margin: "20px",
     padding: "20px",
     display: "grid",
+    ["@media (max-width:500px)"]: { marginLeft: "0px" },
   },
   wrapper: {
     // width: "1900px",
@@ -85,6 +88,7 @@ export default makeStyles((theme) => ({
     color: "grey",
     fontSize: "1.3rem",
     letterSpacing: "1.5px",
+    textTransform: "uppercase",
   },
   carLink: {
     color: "#488AC7",

@@ -20,54 +20,56 @@ const Stepper = ({ carsData }) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  return (
-    <>
-      <CarCard
-        bodyType={carsData[activeStep].bodyType}
-        imageUrl={carsData[activeStep].imageUrl}
-        modelName={carsData[activeStep].modelName}
-        id={carsData[activeStep].id}
-        modelType={carsData[activeStep].modelType}
-      />
+  if (carsData.length > 0) {
+    return (
+      <>
+        <CarCard
+          bodyType={carsData[activeStep].bodyType}
+          imageUrl={carsData[activeStep].imageUrl}
+          modelName={carsData[activeStep].modelName}
+          id={carsData[activeStep].id}
+          modelType={carsData[activeStep].modelType}
+        />
 
-      <MobileStepper
-        variant="dots"
-        steps={carsData.length}
-        position="static"
-        activeStep={activeStep}
-        className={classes.root}
-        nextButton={
-          <Button
-            size="small"
-            aria-label="stepper"
-            onClick={handleNext}
-            disabled={activeStep === carsData.length - 1}
-          >
-            Next
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft aria-label="left icon" />
-            ) : (
-              <KeyboardArrowRight aria-label="right icon" />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button
-            size="small"
-            aria-label="navigation"
-            onClick={handleBack}
-            disabled={activeStep === 0}
-          >
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight aria-label="left icon" />
-            ) : (
-              <KeyboardArrowLeft aria-label="right icon" />
-            )}
-            Back
-          </Button>
-        }
-      />
-    </>
-  );
+        <MobileStepper
+          variant="dots"
+          steps={carsData.length}
+          position="static"
+          activeStep={activeStep}
+          className={classes.root}
+          nextButton={
+            <Button
+              size="small"
+              aria-label="stepper"
+              onClick={handleNext}
+              disabled={activeStep === carsData.length - 1}
+            >
+              Next
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowLeft aria-label="left icon" />
+              ) : (
+                <KeyboardArrowRight aria-label="right icon" />
+              )}
+            </Button>
+          }
+          backButton={
+            <Button
+              size="small"
+              aria-label="navigation"
+              onClick={handleBack}
+              disabled={activeStep === 0}
+            >
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowRight aria-label="left icon" />
+              ) : (
+                <KeyboardArrowLeft aria-label="right icon" />
+              )}
+              Back
+            </Button>
+          }
+        />
+      </>
+    );
+  } else return <p>Loading cars...</p>;
 };
 export default Stepper;
