@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import { Box } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import axios from "axios";
 import { Block, Card, CardContent, Text } from "vcc-ui";
 
@@ -12,6 +12,8 @@ const Home = () => {
   const classes = useStyles();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [carsData, setCarsData] = useState([]);
+  const [right, setRight] = useState(false);
+  const [left, setLeft] = useState(false);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [filteredCars, setFilteredCars] = useState([]);
@@ -25,6 +27,27 @@ const Home = () => {
   const handleWindowSizeChange = () => {
     setScreenWidth(window.innerWidth);
   };
+
+  const slideClick = () => {
+    const container = document.getElementById("container");
+    container.scrollTo(0, 0);
+    setLeft(false);
+  };
+
+  const slideBackClick = () => {
+    const container = document.getElementById("container");
+    container.scrollTo(1700, 0);
+    setRight(false);
+  };
+
+  useEffect(() => {
+    if (left) {
+      slideBackClick();
+    }
+    if (right) {
+      slideClick();
+    }
+  }, [right, left]);
 
   useEffect(() => {
     setLoading(true);
@@ -68,7 +91,7 @@ const Home = () => {
               />
             </Box>
             {!isMobile ? (
-              <Box className={classes.carDisplay}>
+              <Box className={classes.carDisplay} id="container">
                 {filteredCars.map((car) => (
                   <CarCard
                     bodyType={car.bodyType}
@@ -84,6 +107,22 @@ const Home = () => {
             )}
           </CardContent>
         </Card>
+        <Box className={classes.navs}>
+          <Button aria-label="navigation left" onClick={() => setRight(true)}>
+            <img
+              src="images/chevron-circled.svg"
+              className={classes.leftNav}
+              alt="chveron"
+            />
+          </Button>
+          <Button aria-label="navigation right" onClick={() => setLeft(true)}>
+            <img
+              src="images/chevron-circled.svg"
+              className={classes.rightNav}
+              alt="chveron"
+            />
+          </Button>
+        </Box>
       </Block>
     );
 };

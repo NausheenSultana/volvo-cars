@@ -40,7 +40,7 @@ export default makeStyles((theme) => ({
     marginTop: "2px",
   },
   carImg: {
-    width: "400px",
+    width: "350px",
     height: "300px",
     marginTop: "10px",
     ["@media (max-width:500px)"]: { width: "100%" },
@@ -54,6 +54,16 @@ export default makeStyles((theme) => ({
       alignItems: "end",
     },
   },
+  navs: {
+    display: "flex",
+    flexDirection: "initial",
+    justifyContent: "flex-end",
+    margin: "30px 50px",
+    ["@media (max-width:500px)"]: { display: "none" },
+  },
+  leftNav: {
+    transform: "rotate(180deg)",
+  },
   title: {
     color: "black",
     display: "inline-block",
@@ -63,6 +73,7 @@ export default makeStyles((theme) => ({
   },
   carDisplay: {
     display: "flex",
+    overflow: "scroll",
     // width: "1900px",
   },
   carTile: {
